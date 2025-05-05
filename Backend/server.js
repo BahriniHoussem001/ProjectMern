@@ -26,6 +26,9 @@ if (!fs.existsSync(tempDir)) {
 
 // Serve static files from temp directory
 app.use('/temp', express.static(tempDir));
+// log //
+console.log("URI MongoDB utilisée :", process.env.MONGO_URI);
+
 
 const mongo_url = process.env.MONGO_URI;
 
