@@ -179,12 +179,13 @@ app.post("/generate-pdf", auth, async (req, res) => {
         const path = require('path');
         const tempDir = path.join(__dirname, 'temp');
         const tempFilePath = path.join(tempDir, fileName);
-
+        const BASE_URL = process.env.BASE_URL;
         // Copy the file to the temp directory
         fs.copyFileSync(filePath, tempFilePath);
 
         // Set the URL to the local path
-        fileUrl = `http://localhost:5000/temp/${fileName}`;
+        fileUrl = `${BASE_URL}/temp/${fileName}`;
+
         candidate.cvUrl = fileUrl;
         await candidate.save();
       }
